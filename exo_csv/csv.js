@@ -15,9 +15,10 @@ if (file.includes(".csv")){
 console.debug(file)
 
 fs.createReadStream(file)
-    .pipe(parse())
+    .pipe(parse({separator: ';'}))
     .on('data', (row) => {
-        console.log(row);
+        console.log(row['N1']);
+
     })
     .on('end', () => {
         console.log('CSV file successfully processed');
